@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Flight Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="config-panel">
+        <h2>Configuration Panel</h2>
+        <label for="thrust">Thrust (N):</label>
+        <input type="number" id="thrust" value="50000"><br>
+
+        <label for="mass">Mass (kg):</label>
+        <input type="number" id="mass" value="1000"><br>
+
+        <label for="drag">Drag Coefficient:</label>
+        <input type="number" step="0.01" id="drag" value="0.5"><br>
+
+        <button id="simulate">Simulate Flight</button>
+    </div>
+
+    <div id="results-display">
+        <h2>Results</h2>
+        <div id="flight-path">
+            <h3>Flight Path</h3>
+            <canvas id="flightCanvas"></canvas>
+        </div>
+        <div id="metrics">
+            <h3>Metrics</h3>
+            <p id="max-altitude">Max Altitude: <span></span></p>
+            <p id="flight-time">Flight Time: <span></span></p>
+        </div>
+    </div>
+
+    <div id="plots">
+        <h2>Plots</h2>
+        <canvas id="plotCanvas"></canvas>
+    </div>
+
+    <script>
+        document.getElementById('simulate').addEventListener('click', function() {
+            const thrust = parseFloat(document.getElementById('thrust').value);
+            const mass = parseFloat(document.getElementById('mass').value);
+            const drag = parseFloat(document.getElementById('drag').value);
+            // Placeholder for simulation logic
+            const results = simulateFlight(thrust, mass, drag);
+            displayResults(results);
+        });
+
+        function simulateFlight(thrust, mass, drag) {
+            // Simulate flight logic and return results
+            return {
+                maxAltitude: 120000,
+                flightTime: 180
+            };
+        }
+
+        function displayResults(results) {
+            document.getElementById('max-altitude').querySelector('span').innerText = results.maxAltitude + ' m';
+            document.getElementById('flight-time').querySelector('span').innerText = results.flightTime + ' s';
+            drawFlightPath();
+            drawPlots();
+        }
+
+        function drawFlightPath() {
+            const canvas = document.getElementById('flightCanvas');
+            const ctx = canvas.getContext('2d');
+            // Placeholder drawing code
+            ctx.fillStyle = 'lightblue';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawPlots() {
+            const canvas = document.getElementById('plotCanvas');
+            const ctx = canvas.getContext('2d');
+            // Placeholder plotting code
+            ctx.fillStyle = 'lightgreen';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
+</html>
